@@ -1,3 +1,5 @@
+npm install // instalar dependencias contenidas en el archivo package.json
+
 npm i -g @nestjs/cli
 nest new project-name /crear un proyecto
 
