@@ -71,3 +71,14 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+Comandos para consola
+# npm install => instalar dependencias contenidas en el archivo package.json
+# npm i -g @nestjs/cli => inicializar nest.js
+# nest new project-name => crear un proyecto (organiza todas las carpetas)
+# nest generate module nombre =>crear un modulo
+# npm install --save @nestjs/typeorm typeorm => instala orm para la base de datos
+# npm install sqlite3 --save => vincular con una base de datos (puede ser otra que no sea sqlite3)
+
+
