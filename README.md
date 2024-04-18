@@ -22,14 +22,15 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Descripcion
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Nest](https://github.com/nestjs/nest) Este es mi primer trabajo desarrollado en la UTN-FRVM 
+en la catedra de Desarrollo de software, utilizando el framework nest.js.
 
-## Installation
+## Instalacion
 
 ``` bash
-4 npm install # instalar dependencias contenidas en el archivo package.json
+$ npm install # instalar dependencias contenidas en el archivo package.json
 $ npm i -g @nestjs/cli # inicializar nest.js
 $ nest new project-name # crear un proyecto (organiza todas las carpetas)
 $ nest generate module nombre #crear un modulo
@@ -37,7 +38,7 @@ $ npm install --save @nestjs/typeorm typeorm # instala orm para la base de datos
 $ npm install sqlite3 --save # vincular con una base de datos (puede ser otra que no sea sqlite3)
 ```
 
-## Running the app
+## Iniciar la aplicacion
 
 ```bash
 # development
@@ -63,9 +64,6 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Comandos para inicializar 
-
-
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
@@ -77,7 +75,6 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 - Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
-
 Nest is [MIT licensed](LICENSE).
 
 
