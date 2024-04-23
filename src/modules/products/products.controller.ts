@@ -1,9 +1,11 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { products } from '../../data/products.db';
+import { BrandsController } from '../brands/brands.controller';
 
 @Controller('products')
 export class ProductsController {
   // Endpoint GET "/products"
+  constructor(private brandsService: BrandsController) {}
   @Get()
   getAllProducts(@Query() filters: any) {
     let filteredProducts = products;
@@ -41,6 +43,18 @@ export class ProductsController {
       return `ID: ${id} | Nombre: ${productoSolicitado.name} | Precio: ${productoSolicitado.price} | Tipo: ${productoSolicitado.type} | Marca: ${productoSolicitado.brand} | Color: ${productoSolicitado.color} | Talle: ${productoSolicitado.size}`;
     }
   }
+  @Get(':id/brand')
+  getProductBrandById(@Param('id') id: string) {
+    const i = parseInt(id) - 1;
+    let productoSolicitado = products[i];
+    // Verifica la existencia del producto solicitado y devuelve un mensaje en caso de no encontrarlo
+    if (productoSolicitado === undefined) {
+      return (`El producto con id ${id} no existe. Codigo de Error: 404 Not Found`);
+    }else{
+      return this.brandsService.getAllBrands(productoSolicitado.brand)
+    }
+  }
+
 
 
 }

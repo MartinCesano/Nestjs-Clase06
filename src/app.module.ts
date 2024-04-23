@@ -4,6 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { entities } from './modules/entities'; 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { BrandsModule } from './modules/brands/brands.module';
+import { BrandsController } from './modules/brands/brands.controller';
+import { BrandsService } from './modules/brands/brands.service';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -11,8 +14,8 @@ import { AppService } from './app.service';
     database: '../data/products.db',
     entities: entities,
     synchronize: true,
-  }), ProductsModule],
-  controllers: [AppController],
-  providers: [AppService],
+  }), ProductsModule, BrandsModule],
+  controllers: [AppController, BrandsController],
+  providers: [AppService, BrandsService],
 })
 export class AppModule {}
