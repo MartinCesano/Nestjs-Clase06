@@ -1,15 +1,20 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { brands } from '../../data/brands.db';
+import { Controller, Get, Param, NotFoundException } from '@nestjs/common';
+import { BrandsService } from './brands.service';
 
 @Controller('brands')
 export class BrandsController {
-    @Get()
-    getAllBrands(@Query() filters: any) {
-        let filteredBrands = brands;
-        if (filters.type) {
-            filteredBrands = filteredBrands.filter(brands => brands.name === filters.name);
-        }
-        return brands;
-    }
+  constructor(private readonly brandsService: BrandsService) {}
 
+  @Get(':id')
+  getBrandById(@Param('id') id: string) {
+    try {
+      const brand = this.brandsService.getBrandByName(id);
+      return brand;
+    } catch (error) {
+      if (error instanceof NotFoundException) {
+        throw new NotFoundException(error.message);
+      }
+      throw error;
+    }
+  }
 }
