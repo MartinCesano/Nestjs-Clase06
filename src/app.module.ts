@@ -5,8 +5,6 @@ import { entities } from './modules/entities';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BrandsModule } from './modules/brands/brands.module';
-import { BrandsController } from './modules/brands/brands.controller';
-import { BrandsService } from './modules/brands/brands.service';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -15,7 +13,7 @@ import { BrandsService } from './modules/brands/brands.service';
     entities: entities,
     synchronize: true,
   }), ProductsModule, BrandsModule],
-  controllers: [AppController, BrandsController],
-  providers: [AppService, BrandsService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
