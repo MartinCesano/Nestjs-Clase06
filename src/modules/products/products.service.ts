@@ -1,11 +1,22 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, HttpException } from '@nestjs/common';
 import { products } from '../../data/products.db';
 import { BrandsService } from '../brands/brands.service';
+import { ProductEntity } from '../entities/product.entity';
+import { DeepPartial } from 'typeorm';
 
 
 @Injectable()
 export class ProductsService {
   constructor(private readonly brandsService: BrandsService) {} // Inyecta BrandsService
+  reporistory = ProductEntity
+  async createProduct(product: DeepPartial<ProductEntity>): Promise<ProductEntity> {
+    try{
+      return await this.reporistory.save(product)
+    }catch(error){
+      throw new HttpException('Create Product Error', 500);
+    }
+  }
+
   getAllProducts(filters: any): any[] {
     let filteredProducts = products;
     if (filters.type) {

@@ -1,5 +1,8 @@
-import { Controller, Get, Param, Query, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Param, Query, Post, Body } from '@nestjs/common';
 import { ProductsService } from './products.service';
+import { DeepPartial } from 'typeorm';
+import { ProductEntity } from '../entities/product.entity';
+
 
 @Controller('products')
 export class ProductsController {
@@ -20,4 +23,8 @@ export class ProductsController {
     return this.productsService.getProductBrandById(id);
   }
   
+  @Post()
+  async createProduct(@Body() product: DeepPartial<ProductEntity>): Promise<ProductEntity> {
+    return await this.productsService.createProduct(product);
+  }
 }
