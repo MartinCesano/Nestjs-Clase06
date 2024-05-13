@@ -9,6 +9,7 @@ import { DeepPartial } from 'typeorm';
 export class ProductsService {
   constructor(private readonly brandsService: BrandsService) {} // Inyecta BrandsService
   reporistory = ProductEntity
+
   async createProduct(product: DeepPartial<ProductEntity>): Promise<ProductEntity> {
     try{
       return await this.reporistory.save(product)
@@ -17,7 +18,7 @@ export class ProductsService {
     }
   }
 
-  getAllProducts(filters: any): any[] {
+  async getAllProducts(filters: any): Promise<ProductEntity[]> {
     let filteredProducts = products;
     if (filters.type) {
       filteredProducts = filteredProducts.filter(product => product.type === filters.type);
@@ -31,7 +32,7 @@ export class ProductsService {
     return filteredProducts;
   }
 
-  getProductById(id: string): string | any {
+  async getProductById(id: string): Promise<string | any> {
     const product = products[id] 
     if (!product) {
       throw new NotFoundException(`El producto con id ${id} no existe.`);
@@ -39,10 +40,10 @@ export class ProductsService {
     return product;
   }
 
-  getProductBrandById(id: string): any {
+  async getProductBrandById(id: string): Promise<any> {
     try {
-      const brandName = this.getProductById(id).brand;
-      const brand =  this.brandsService.getBrandByName(brandName);	
+      const brandName = await this.getProductById(id).brand;
+      const brand =  await this.brandsService.getBrandByName(brandName);	
       return { brand };
     } catch (error) {
       if (error instanceof NotFoundException) {
